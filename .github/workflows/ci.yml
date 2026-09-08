@@ -1,0 +1,58 @@
+name: ci
+
+on:
+  push:
+    branches:
+      - dev
+      - main
+  pull_request:
+    branches:
+      - dev
+      - main
+
+jobs:
+  tests:
+    name: tests
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: checkout repository
+        uses: actions/checkout@v4
+
+      - name: setup php
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.4'
+          coverage: none
+
+      - name: prepare environment
+        run: cp .env.example .env
+
+      - name: install dependencies
+        run: composer install --no-interaction --prefer-dist --no-progress
+
+      - name: generate app key
+        run: php artisan key:generate
+
+      - name: run tests
+        run: php artisan test
+
+  code-style:
+    name: code-style
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: checkout repository
+        uses: actions/checkout@v4
+
+      - name: setup php
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.4'
+          coverage: none
+
+      - name: install dependencies
+        run: composer install --no-interaction --prefer-dist --no-progress
+
+      - name: check code style
+        run: ./vendor/bin/pint --test
