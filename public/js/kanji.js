@@ -59,3 +59,14 @@ nextButton.addEventListener('click', () => {
 });
 
 renderCard();
+
+// simpan kartu yang sudah diingat selama halaman masih terbuka
+const rememberedCards = new Set();
+
+const rememberButton = document.getElementById('remember-button');
+const rememberedCount = document.getElementById('remembered-count');
+
+rememberButton.addEventListener('click', () => {
+    rememberedCards.add(currentIndex);
+    rememberedCount.textContent = rememberedCards.size;
+});
