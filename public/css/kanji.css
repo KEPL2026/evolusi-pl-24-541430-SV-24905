@@ -222,3 +222,22 @@ h1 {
         width: 100%;
     }
 }
+
+.progress-actions {
+    margin-top: 18px;
+    text-align: center;
+}
+
+.remember-button {
+    padding: 12px 20px;
+    color: var(--text);
+    background: var(--yellow);
+    border: 0;
+    border-radius: 10px;
+    font-weight: 700;
+}
+
+.remembered-progress {
+    margin: 12px 0 0;
+    color: var(--muted);
+}

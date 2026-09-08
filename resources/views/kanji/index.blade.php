@@ -80,6 +80,18 @@
                     berikutnya →
                 </button>
             </div>
+
+            <div class="progress-actions">
+                <button id="remember-button" class="remember-button">
+                    sudah ingat
+                </button>
+
+                <p class="remembered-progress">
+                    diingat:
+                    <strong id="remembered-count">0</strong>
+                    / {{ count($kanji) }}
+                </p>
+            </div>
         </section>
 
         <section class="study-note">
